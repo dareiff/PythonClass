@@ -1,7 +1,7 @@
 import socket
 import sys
 
-HOST = 'block115396-r76.blueboxgrid.com/'
+HOST = 'block115396-r76.blueboxgrid.com'
 # HOST = ''
 PORT = 40008
 
