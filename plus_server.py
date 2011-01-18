@@ -10,15 +10,16 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((HOST, PORT))
 s.listen(5)
 
-def addedFunction(receivedString):
+def addedFunction(conn, receivedString):
 	print receivedString
 	newString = receivedString.split(',')
-	return newString
+	conn.send(newString)
 
 while True:
 	conn, addr = s.accept()
 	data = conn.recv(1024)
-	conn.send(addedFunction(data))
+	print data
+	addedFunction(conn, data)
 	
 # print 'Variables received: %s and %s' % 
 
