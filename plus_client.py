@@ -10,5 +10,5 @@ s.connect((HOST, PORT))
 
 s.send('1,5')
 data = s.recv(1024)
-print 'Received:', repr(data)
+print 'Received:', data
 s.close()

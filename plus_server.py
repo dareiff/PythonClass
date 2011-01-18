@@ -5,13 +5,10 @@ import sys
 HOST = ''
 PORT = 40008
 
-s = None
-
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 s.bind((HOST, PORT))
 s.listen(5)
-conn, addr = s.accept()
 
 def addedFunction(receivedString):
 	print receivedString
@@ -19,8 +16,8 @@ def addedFunction(receivedString):
 	return newString
 
 while True:
+	conn, addr = s.accept()
 	data = conn.recv(1024)
-	if not data: break
 	conn.send(addedFunction(data))
 	
 # print 'Variables received: %s and %s' % 
