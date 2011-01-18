@@ -14,6 +14,7 @@ s.listen(5)
 conn, addr = s.accept()
 
 def addedFunction(receivedString):
+	print receivedString
 	newString = receivedString.split(',')
 	return newString
 
