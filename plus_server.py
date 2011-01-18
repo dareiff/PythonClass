@@ -13,7 +13,9 @@ s.listen(5)
 def addedFunction(conn, receivedString):
 	print receivedString
 	newString = receivedString.split(',')
-	conn.send(newString)
+	print newString
+	finalString = int(newString[0]) + int(newString[1])
+	conn.send(str(finalString))
 
 while True:
 	conn, addr = s.accept()
