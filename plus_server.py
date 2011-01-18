@@ -18,7 +18,7 @@ def addedFunction(receivedString):
 	newString = receivedString.split(',')
 	return newString
 
-while 1:
+while True:
 	data = conn.recv(1024)
 	if not data: break
 	conn.send(addedFunction(data))
