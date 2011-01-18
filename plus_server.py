@@ -10,7 +10,7 @@ s = None
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 s.bind((HOST, PORT))
-s.listen(1)
+s.listen(5)
 conn, addr = s.accept()
 
 def addedFunction(receivedString):
@@ -20,7 +20,7 @@ def addedFunction(receivedString):
 while 1:
 	data = conn.recv(1024)
 	if not data: break
-	conn.send(addedFunction)
+	conn.send(addedFunction(data))
 	
 # print 'Variables received: %s and %s' % 
 
