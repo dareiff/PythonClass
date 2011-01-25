@@ -55,6 +55,17 @@ EXECUTE_PYTHON =\
 </html>
 """
 
+DATE_TIME =\
+"""
+<html>
+<head><title>%s</title></head>
+<body>
+<p>%s</p>
+</body>
+</html>
+
+"""
+
 DIRECTORY_LINE = '<a href="%s">%s</a><br>'
 
 def server_socket(host, port):
@@ -85,20 +96,20 @@ def list_directory(uri):
 		[DIRECTORY_LINE % (e, e) for e in entries]))
 
 def send_time(uri):
-	return datetime.datetime.now()
+	return DATE_TIME(uri, datetime.datetime.now())
 
 def get_file(path, uri):
-	if path.endswith('.py'):
-		return execute_python_script(path, uri)
-	elif path.endswith('/time'):
-	    return send_time(uri)
-	else:
-		f = open(path)
-		try:
-			return f.read()
-		finally:
-			f.close()
-		
+    if path.endswith('.py'):
+        return execute_python_script(path, uri)
+    elif path.endswith('/time'):
+        return send_time(uri)
+    else:
+        f = open(path)
+        try:
+            return f.read()
+        finally:
+            f.close()
+            
 def execute_python_script(path, uri):
     # os.system('python %s' % path)
     # Need to switch to the subprocess module
@@ -107,23 +118,23 @@ def execute_python_script(path, uri):
     return EXECUTE_PYTHON % (path, uri, process.stdout.read())
 
 def get_content(uri):
-	print 'fetching:', uri
-	try:
-		path = '.' + uri
-		if os.path.isfile(path):
-			return (200, get_mime(uri), get_file(path, uri))
-		if os.path.isdir(path):
-			if(uri.endswith('/')):
-				return (200, 'text/html', list_directory(uri))
-            # elif(uri.endswith('time')):
-            #   return (200, 'text/html', send_time(uri))
+    print 'fetching:', uri
+    try:
+        path = '.' + uri
+        if os.path.isfile(path):
+            return (200, get_mime(uri), get_file(path, uri))
+        if os.path.isdir(path):
+            if(uri.endswith('/')):
+                return (200, 'text/html', list_directory(uri))
+            elif(uri.endswith('time')):
+                return (200, 'text/html', send_time(uri))
             # elif(uri.endswith('.py')):
             #   return (200, 'text/html', execute_python_script(uri))
-			else:
-				return (301, uri + '/')
-		else: return (404, uri)
-	except IOError, e:
-		return (404, e)
+            else:
+                return (301, uri + '/')
+        else: return (404, uri)
+    except IOError, e:
+        return (404, e)
 
 def get_mime(uri):
 	return mime_types.get(os.path.splitext(uri)[1], 'text/plain')
