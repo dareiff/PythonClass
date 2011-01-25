@@ -1,4 +1,4 @@
-import os, socket, sys, datetime
+import os, socket, sys, datetime, subprocess, pprint
 
 defaults = ['127.0.0.1', '8080']
 mime_types = {'.jpg' : 'image/jpg',
@@ -49,6 +49,8 @@ EXECUTE_PYTHON =\
 <head><title>%s</title></head>
 <body>
 <p>%s ran successfully.</p>
+<p>The results:</p>
+<blockquote>%s</blockquote>
 </body>
 </html>
 """
@@ -88,6 +90,8 @@ def send_time(uri):
 def get_file(path, uri):
 	if path.endswith('.py'):
 		return execute_python_script(path, uri)
+	elif path.endswith('/time'):
+	    return send_time(uri)
 	else:
 		f = open(path)
 		try:
@@ -96,8 +100,11 @@ def get_file(path, uri):
 			f.close()
 		
 def execute_python_script(path, uri):
-	os.system('python %s' % path)
-	return EXECUTE_PYTHON % (path, uri)
+    # os.system('python %s' % path)
+    # Need to switch to the subprocess module
+    process = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
+    process.wait()
+    return EXECUTE_PYTHON % (path, uri, process.stdout.read())
 
 def get_content(uri):
 	print 'fetching:', uri
@@ -108,10 +115,10 @@ def get_content(uri):
 		if os.path.isdir(path):
 			if(uri.endswith('/')):
 				return (200, 'text/html', list_directory(uri))
-			elif(uri.endswith('/time')):
-				return (200, 'text/html', send_time())
-			elif(uri.endswith('.py')):
-				return (200, 'text/html', execute_python_script(uri))
+            # elif(uri.endswith('time')):
+            #   return (200, 'text/html', send_time(uri))
+            # elif(uri.endswith('.py')):
+            #   return (200, 'text/html', execute_python_script(uri))
 			else:
 				return (301, uri + '/')
 		else: return (404, uri)
