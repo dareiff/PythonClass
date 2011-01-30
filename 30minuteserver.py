@@ -101,8 +101,6 @@ def send_time(uri):
 def get_file(path, uri):
     if path.endswith('.py'):
         return execute_python_script(path, uri)
-    elif path.endswith('/time'):
-        return send_time(uri)
     else:
         f = open(path)
         try:
@@ -126,12 +124,12 @@ def get_content(uri):
         if os.path.isdir(path):
             if(uri.endswith('/')):
                 return (200, 'text/html', list_directory(uri))
-            elif(uri.endswith('time')):
-                return (200, 'text/html', send_time(uri))
-            # elif(uri.endswith('.py')):
-            #   return (200, 'text/html', execute_python_script(uri))
             else:
                 return (301, uri + '/')
+        elif(path.startswith('time')):
+            return (200, 'text/html', send_time(uri))
+            # elif(uri.endswith('.py')):
+            #   return (200, 'text/html', execute_python_script(uri))
         else: return (404, uri)
     except IOError, e:
         return (404, e)
