@@ -1,3 +1,5 @@
+#I'm not at all done yet. Was in San Fran for Macworld this past week and have been just racked with stuff to do.
+
 from BeautifulSoup import BeautifulSoup
 import urllib2
 from pprint import pprint
