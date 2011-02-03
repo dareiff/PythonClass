@@ -6,20 +6,15 @@ from pprint import pprint
 import html2text
 import re
 
-website = urllib2.urlopen("http://briandorsey.info/uwpython/Internet_Programming_in_Python.html")
 
 #What we need to do:
-# - Download Files from the Topics column in table
 # - Download HTML (& save) from the Readings column in table
 
 def downloadPDFs():
+    website = urllib2.urlopen("http://briandorsey.info/uwpython/Internet_Programming_in_Python.html")
 	soup = BeautifulSoup(website)
-
 	print soup.html.head.title.string # Should use this, somehow, to print out the HREF name (Between the <a></a> tags)
-
 	print "There are " + str(len(soup('a'))) + " <a> tags"#So this tells us that we have 87 a tags
-
-	researchstring = "^*.pdf"
 
 	aTags = soup.findAll('a', href=re.compile("[^*].pdf"))
 
@@ -42,6 +37,12 @@ def downloadPDFs():
 		# s[item] = item.attrs[0]
 		# print dir(item)
 
-	# So, I've successfully scraped for all PDFs. Now I just need to follow all Documentation links that either in in "/" or ".html" and I'm good! I think.
-	
-downloadPDFs()
+# So, I've successfully scraped for all PDFs. just need to follow all Documentation links that either in in "/" or ".html" and I'm good! I think.
+
+def downloadLinksAsPDFs():
+    website = urllib2.urlopen("http://briandorsey.info/uwpython/Internet_Programming_in_Python.html")
+    soup = BeautifulSoup(website)
+    
+
+# downloadPDFs()
+downloadLinksAsPDFs()
