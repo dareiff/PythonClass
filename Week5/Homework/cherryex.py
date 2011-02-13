@@ -12,10 +12,4 @@ class HelloWorld:
 	index.exposed = True
 
 
-class Root:
-	def doLogin(self, username=None, password=None):
-		#check the username and password
-	doLogin.exposed = True
-	
-
 cherrypy.quickstart(HelloWorld())

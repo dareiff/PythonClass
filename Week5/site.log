@@ -1,0 +1,18 @@
+[13/Feb/2011:15:28:47] ENGINE Listening for SIGHUP.
+[13/Feb/2011:15:28:47] ENGINE Listening for SIGTERM.
+[13/Feb/2011:15:28:47] ENGINE Listening for SIGUSR1.
+[13/Feb/2011:15:28:47] ENGINE Bus STARTING
+[13/Feb/2011:15:28:47] ENGINE Started monitor thread '_TimeoutMonitor'.
+[13/Feb/2011:15:28:47] ENGINE Started monitor thread 'Autoreloader'.
+[13/Feb/2011:15:28:47] ENGINE Serving on 127.0.0.1:8080
+[13/Feb/2011:15:28:47] ENGINE Bus STARTED
+[13/Feb/2011:15:30:29] ENGINE Restarting because site.conf changed.
+[13/Feb/2011:15:30:29] ENGINE Stopped thread 'Autoreloader'.
+[13/Feb/2011:15:30:29] ENGINE Bus STOPPING
+[13/Feb/2011:15:30:29] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+[13/Feb/2011:15:30:29] ENGINE Stopped thread '_TimeoutMonitor'.
+[13/Feb/2011:15:30:29] ENGINE Bus STOPPED
+[13/Feb/2011:15:30:29] ENGINE Bus EXITING
+[13/Feb/2011:15:30:29] ENGINE Bus EXITED
+[13/Feb/2011:15:30:29] ENGINE Waiting for child threads to terminate...
+[13/Feb/2011:15:30:29] ENGINE Re-spawning /Users/derek/Dropbox/Code/PythonClass2/Week5/bookdb_test.py
