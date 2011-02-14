@@ -52,8 +52,7 @@ class theIndex(object):
 	
 current_dir = os.path.dirname(os.path.abspath(__file__))
 conf = {'/static': {'tools.staticdir.on': True,
-                      'tools.staticdir.dir': os.path.join(current_dir, 'static'),
-                      'tools.staticdir.content_types': {'rss': 'application/xml',
-                                                        'atom': 'application/atom+xml'}}}
+                      'tools.staticdir.dir': os.path.join(current_dir, 'static')},
+	'global': {'server.socket_host': '0.0.0.0', 'server.socket_port':8001, }}
 
 cherrypy.quickstart(theIndex(), '/', conf)
