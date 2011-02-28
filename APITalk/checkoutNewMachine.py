@@ -2,7 +2,7 @@ from github2.client import Github
 import sys, os
 
 """
-Takes the usernamd and api_token from the command line,
+Takes the username and api_token from the command line,
 and then asks the user if it wants to take _every_ repo,
 or download on a True/False basis.
 """
