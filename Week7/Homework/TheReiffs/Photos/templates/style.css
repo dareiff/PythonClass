@@ -1,0 +1,26 @@
+
+body {
+	background-color: #c0ced5;
+}
+
+h1, h2, h3, h4 {
+	font-family: "Verdana";
+}
+
+p {
+	font-family: "Verdana";
+}
+
+a {
+	color: #1d2969;
+}
+
+content {
+	margin: 300px;
+}
+
+li {
+	font-family: "Verdana";
+	list-style-type: circle;
+	margin-bottom: 5px;
+}
