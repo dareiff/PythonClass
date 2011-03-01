@@ -5,7 +5,7 @@ from django.template import Context, loader
 # Create your views here.
 
 def index(request):
-	return HttpResponse("hello, world. You're at the photo/family index")
+	return HttpResponse("""<a href="/family/">Family Members</a> | <a href="/photos/">Photos</a>""")
 
 def family(request):
 	family_members = FamilyMembers.objects.all().order_by('id')
@@ -19,7 +19,7 @@ def photos(request):
 	c = Context({'last_8_photos': last_8_photos})
 	return HttpResponse(t.render(c))
 
-def detail(request, Photos_photos_id):
+def photodetail(request, Photos_photos_id):
 	# return HttpResponse("This is a single photo detail page. %s" % Photos[Photos_photos_id].imagefile)
 	return HttpResponse("This is a single photo detail page. %s" % dir(Photos.objects))
 

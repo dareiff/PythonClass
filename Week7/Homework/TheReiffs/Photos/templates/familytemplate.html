@@ -9,10 +9,11 @@
 <body>
 	<div id="content">
 	<h1>The Reiff's</h1>
+	<a href="/photos/"><h3>Photos</h3></a>
 {% if family_members %}
     <ul>
     {% for member in family_members %}
-        <li><a href="/family/{{ member.id }}/">{{ member.member }}</a></li>
+        <li><a href="/familya/{{ member.id }}/">{{ member.member }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
