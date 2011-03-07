@@ -1,0 +1,17 @@
+So, this talk will be just a bit meta — it's about the API for Github.
+
+So, the basics of Github's API are to search, so whether that's for different users or repositories; to list data, which might be in the form of all of a user's repositories or all of a repositories contributors, and to modify data. Most of the data modification has to do with bits of information that are outside of git itself, like issue tracking within Github, personal user-data, and pull requests.
+
+For the most part, Github's API is full-featured, but there are still a few portions that have the tag "coming soon." They're currently on version 2 of the API, with the big difference being in how they return data. Version 1 was XML or YAML, while version 2 is all json. They still honor the requests that want XML or YAML, but it's officially deprecated.
+
+github2, a pythonic module, is very much in beta, though. there were a few things that I attempted that returned cryptic erros, so feel free to fork and fix on github.
+
+Github prefers oauth authentication, but also accepts basic auth (username and password) authentication; you can do about 50% to 60% of your work unathenticated, too, like searching and listing. The users API is set up to do basic searching by username and email, or to show more information about a user, what they're involved in on Github, and a bit more. For instance, you can actually follow each user a particular person is following; if Brian followed a lot of great python developers, you could use github2 to go through and follow that network. 
+
+Now, for repositories, it starts getting a bit better.The basic search functionality is great — you can search for, say, a keyword, like Google Chat, and by language, like Python. Granted yuo can do all this stuff via the site, faster, but combining a bit of programming can expand out quite a bit. For example, you could take a look at the big people on github, see what they're contributing to, and see where stuff overlaps.
+
+So, if you've just purchased a new dev machine, you might have a few repositories that you want to get set up —  I wrote a quick script that will take a username and API token, and then walk through all the repositores you own, asking if you want to clone to the current working directory.
+
+Basically, we've got a github2 object, that lists the USER's repositories, and prompts for a clone yes or no answer.
+
+It works!
