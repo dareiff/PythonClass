@@ -1,0 +1,15 @@
+application: drphonelog
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+
+- url: /stylesheets
+  static_dir: stylesheets
+
+- url: /.*
+  script: main.py
+
+# - url: /charts
+#   script: charts.py

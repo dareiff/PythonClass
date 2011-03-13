@@ -1,0 +1,30 @@
+Application /Google App Engine notes:
+
+- Can't use Mysql
+-- perhaps key = CallID, values = (Kris, App, Time, Notes)
+
+- other big problem was working with datetime objects. for such a 'simple' module, got stuck for a few hours
+-- turns out it was my fault! had 00:00:00 instead of just 00 (minutes)
+
+-GQL to retrieve, rather than SQL
+--Can I copy my SQL code?
+---YUP
+
+-stylesheet
+--in app.yaml, the static stuff needs to be above /.*
+---something i'd have never thought of.
+----actually just read the documentation before you start.
+
+-around 3 hours, and I have pretty much what I need: a form that submits data, and a place to store it.
+
+- but should I trust google's storage? Obviously they're big, but what if I want my data. Can I export it?
+- Are there SQL options? Not on their server.
+- How private is this App?
+--RESEARCH THAT
+
+-Screen shot 2010-11-20 at 3.49.36 PM
+
+- What happens if you change the database model after awhile?
+- self.response.out.write vs print?
+
+-Now, onto charts

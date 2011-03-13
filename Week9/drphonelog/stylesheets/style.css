@@ -1,0 +1,35 @@
+p {
+}
+
+body {
+	background-color: #e5e5e5;
+	position: absolute;
+	left: 10%;
+	top: 10%;
+	font-size: 16px;
+	font-family: Helvetica, Verdana;
+}
+
+input {
+	font-size: 20px;
+}
+
+select {
+	font-size: 29px;
+}
+
+.bigger {
+	font-size: 30px;
+}
+
+#footer {
+	top: 10%;
+	font-family: Helvetica, Verdana, Arial, sans-serif;
+	text-align: left;
+	width: 100%;
+	position: relative;
+}
+
+a {
+	color: #3c4664;
+}
